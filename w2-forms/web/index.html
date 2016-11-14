@@ -9,8 +9,34 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function validateForm() {
+                if (document.forms["formName"]["firstname"].value == '' || document.forms["formName"]["lastname"].value == '' || document.forms["formName"]["city"].value == '' || document.forms["formName"]["email"].value == '' || document.forms["formName"]["mobile"].value == '' || document.forms["formName"]["birthyear"].value == '' || document.forms["formName"]["description"].value == '') {
+                    alert('Udfyld venligst alle felter');
+                    return false;
+		}
+		return true;
+            }
+        </script>
+
     </head>
     <body>
-        <div>TODO write content</div>
+        <form name="formName" action="MyLittleServlet" method="POST" onsubmit="return validateForm()">
+            Firstname: <input type="text" name="firstname" value="Michael"/>*<br>
+            Lastname: <input type="text" name="lastname" value="Hansen"/>*<br>
+            City: <input type="text" name="city" value="København S"/>*<br>
+            Email: <input type="email" name="email" value="nobody@nowhere.com"/>*<br>
+            Mobile: <input type="number" name="mobile" min="10000000" max="99999999" value="23456789"/>*<br>
+            Birthyear: <input type="number" name="birthyear" min="1950" max="2016" value="1980"/>*<br>
+            Gender:<br>
+            <input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other<br>
+            Description:  <input type="text" name="description" value="ingen tekst"/>*<br>
+            Image URL:  <input type="text" name="imgUrl" value="https://pbs.twimg.com/profile_images/666037217832243200/TvOVC0ns.png"/><br>
+            <input type="reset" value="Reset">
+            <input type="submit" value="Send"/>
+        </form>
+        <p>* = skal udfyldes</p>
     </body>
 </html>
